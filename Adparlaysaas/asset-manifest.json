@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Adparlay/static/css/main.e8895bff.css",
+    "main.js": "/Adparlay/static/js/main.26ace347.js",
+    "static/js/453.50c79ced.chunk.js": "/Adparlay/static/js/453.50c79ced.chunk.js",
+    "index.html": "/Adparlay/index.html",
+    "main.e8895bff.css.map": "/Adparlay/static/css/main.e8895bff.css.map",
+    "main.26ace347.js.map": "/Adparlay/static/js/main.26ace347.js.map",
+    "453.50c79ced.chunk.js.map": "/Adparlay/static/js/453.50c79ced.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e8895bff.css",
+    "static/js/main.26ace347.js"
+  ]
+}

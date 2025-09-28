@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl all content
+Disallow: /admin
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://adparlaysaas.web.app/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

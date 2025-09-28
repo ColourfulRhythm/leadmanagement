@@ -1,0 +1,23 @@
+{
+  "name": "adparlay-backend",
+  "version": "1.0.0",
+  "main": "api/index.ts",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "build": "echo 'No build step needed for Vercel'",
+    "start": "npx vercel dev",
+    "deploy": "npx vercel --prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "firebase-admin": "^13.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vercel": "^33.0.0"
+  }
+}
