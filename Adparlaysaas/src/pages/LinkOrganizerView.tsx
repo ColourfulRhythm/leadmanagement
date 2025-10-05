@@ -415,8 +415,49 @@ const LinkOrganizerView: React.FC = () => {
     );
   }
 
-  const visibleLinks = Array.isArray(linkOrganizer?.links) ? linkOrganizer.links.filter(link => link.isVisible) : [];
-  const visibleProducts = Array.isArray(linkOrganizer?.products) ? linkOrganizer.products.filter(product => product.isVisible) : [];
+  // Handle both array and object data structures for links and products
+  const getVisibleLinks = (): LinkItem[] => {
+    try {
+      if (!linkOrganizer?.links) return [];
+      
+      console.log('Links data structure:', {
+        type: typeof linkOrganizer.links,
+        isArray: Array.isArray(linkOrganizer.links),
+        keys: typeof linkOrganizer.links === 'object' ? Object.keys(linkOrganizer.links) : 'N/A'
+      });
+      
+      if (Array.isArray(linkOrganizer.links)) {
+        return (linkOrganizer.links as LinkItem[]).filter((link: LinkItem) => link && link.isVisible);
+      } else if (typeof linkOrganizer.links === 'object' && linkOrganizer.links !== null) {
+        // Handle object structure where keys are link IDs
+        return Object.values(linkOrganizer.links as Record<string, LinkItem>).filter((link: LinkItem) => link && link.isVisible);
+      }
+      return [];
+    } catch (error) {
+      console.error('Error processing links:', error);
+      return [];
+    }
+  };
+
+  const getVisibleProducts = (): ProductItem[] => {
+    try {
+      if (!linkOrganizer?.products) return [];
+      
+      if (Array.isArray(linkOrganizer.products)) {
+        return (linkOrganizer.products as ProductItem[]).filter((product: ProductItem) => product && product.isVisible);
+      } else if (typeof linkOrganizer.products === 'object' && linkOrganizer.products !== null) {
+        // Handle object structure where keys are product IDs
+        return Object.values(linkOrganizer.products as Record<string, ProductItem>).filter((product: ProductItem) => product && product.isVisible);
+      }
+      return [];
+    } catch (error) {
+      console.error('Error processing products:', error);
+      return [];
+    }
+  };
+
+  const visibleLinks = getVisibleLinks();
+  const visibleProducts = getVisibleProducts();
 
   return (
     <div className="min-h-screen gradient-bg text-white font-sans flex flex-col items-center p-4 sm:p-8">
@@ -686,8 +727,8 @@ const LinkOrganizerView: React.FC = () => {
                     </div>
                   ) : (
                   visibleLinks
-                      .sort((a, b) => a.order - b.order)
-                      .map((link, index) => (
+                      .sort((a: LinkItem, b: LinkItem) => a.order - b.order)
+                      .map((link: LinkItem, index: number) => (
                         <motion.button
                           key={link.id}
                           initial={{ opacity: 0, y: 20 }}
@@ -760,7 +801,7 @@ const LinkOrganizerView: React.FC = () => {
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 gap-4">
-                      {visibleProducts.map((product, index) => (
+                      {visibleProducts.map((product: ProductItem, index: number) => (
                         <motion.button
                           key={product.id}
                           onClick={() => handleProductClick(product)}
