@@ -83,7 +83,14 @@ This project is ready to deploy on Vercel:
 
 1. Push your code to GitHub
 2. Import your repository in Vercel
-3. Deploy automatically
+3. In Vercel project settings, ensure:
+   - **Framework Preset**: Next.js (auto-detected)
+   - **Build Command**: `npm run build` (default)
+   - **Install Command**: `npm install` (default)
+   - **Skip Git Submodules**: **IMPORTANT** - Enable this option in Settings → Git to avoid submodule warnings
+4. Deploy automatically
+
+**Note**: The submodule warning is harmless but can be disabled in Vercel Settings → Git → "Skip Git Submodules"
 
 ## License
 
