@@ -29,13 +29,9 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <a href="/">
-              <Image
-                src="/logo/8ae1ac18-1bc4-4eff-83db-32a88328cce3.JPG"
-                alt="School of Self-Discovery Logo"
-                width={120}
-                height={60}
-                className="object-contain"
-              />
+              <div className="w-[120px] h-[60px] flex items-center justify-center">
+                <span className="text-primary font-bold text-lg">SOSD</span>
+              </div>
             </a>
           </div>
           <div className="hidden md:flex items-center space-x-8">

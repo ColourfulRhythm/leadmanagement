@@ -6,14 +6,9 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/10"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-8 flex justify-center">
-          <Image
-            src="/logo/8ae1ac18-1bc4-4eff-83db-32a88328cce3.JPG"
-            alt="School of Self-Discovery Logo"
-            width={400}
-            height={200}
-            className="object-contain"
-            priority
-          />
+          <div className="w-[400px] h-[200px] flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg">
+            <h2 className="text-4xl font-bold text-white">School of Self-Discovery</h2>
+          </div>
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
           Unlock Your Inner Possibilities

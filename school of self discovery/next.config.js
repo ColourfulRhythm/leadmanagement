@@ -2,9 +2,10 @@
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
-    unoptimized: true, // Required for static export
+    unoptimized: false,
   },
-  output: 'export', // Static export for GitHub Pages
+  // Remove static export for Vercel deployment
+  // output: 'export', // Only for GitHub Pages
   trailingSlash: true,
 }
 
