@@ -32,8 +32,8 @@ export default function Navigation() {
               <Image
                 src="/logo/PHOTO-2025-12-14-09-06-07.jpg"
                 alt="School of Self-Discovery Logo"
-                width={120}
-                height={60}
+                width={80}
+                height={40}
                 className="object-contain"
               />
             </a>
