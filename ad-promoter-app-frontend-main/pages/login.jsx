@@ -93,7 +93,10 @@ const Login = () => {
         refreshToken = backendResult.refreshToken;
       }
     } catch (error) {
-      console.warn('Backend social login failed:', error);
+      // Backend unavailable (503) or other errors - continue with Firebase auth only
+      console.warn('Backend social login failed, continuing with Firebase authentication:', error.message);
+      // Don't show error to user - Firebase auth still works
+      // User can still login and use the app, just won't have backend JWT token
     }
 
     setAuth({
