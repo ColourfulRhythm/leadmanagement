@@ -19,7 +19,23 @@ const rawApiBaseUrl =
   process.env.NEXT_PUBLIC_API_BASE_URL || 
   'https://us-central1-ad-promoter-36ef7.cloudfunctions.net/api';
 
-export const API_BASE_URL = normalizeBaseUrl(rawApiBaseUrl);
+// Safeguard: Reject invalid/non-existent domains and fallback to Firebase Functions
+const INVALID_DOMAINS = ['api.ad-promoter.com', 'www.api.ad-promoter.com'];
+const normalizedRawUrl = normalizeBaseUrl(rawApiBaseUrl);
+const isInvalidDomain = INVALID_DOMAINS.some(domain => normalizedRawUrl.includes(domain));
+
+export const API_BASE_URL = isInvalidDomain
+  ? 'https://us-central1-ad-promoter-36ef7.cloudfunctions.net/api'
+  : normalizedRawUrl;
+
+// Log warning if invalid domain was detected
+if (isInvalidDomain && typeof window !== 'undefined') {
+  console.warn(
+    `⚠️ Invalid API_BASE_URL detected (${rawApiBaseUrl}). ` +
+    `Using Firebase Functions instead: ${API_BASE_URL}. ` +
+    `Please update NEXT_PUBLIC_API_BASE_URL environment variable.`
+  );
+}
 
 export const buildApiUrl = (path = '') => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
